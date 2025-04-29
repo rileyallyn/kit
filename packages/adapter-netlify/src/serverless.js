@@ -21,13 +21,11 @@ export function init(manifest) {
 			init_promise = null;
 		}
 
-		const response = await server.respond(request, {
+		return server.respond(request, {
 			platform: { context },
 			getClientAddress() {
-				return request.headers.get('x-nf-client-connection-ip');
+				return context.ip;
 			}
 		});
-
-		return response;
 	};
 }
