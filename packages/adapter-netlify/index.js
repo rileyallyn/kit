@@ -51,7 +51,7 @@ export default function ({ split = false, edge = edge_set_in_env_var } = {}) {
 			if (!builder.routes) {
 				throw new Error(
 					'@sveltejs/adapter-netlify >=2.x (possibly installed through @sveltejs/adapter-auto) requires @sveltejs/kit version 1.5 or higher. ' +
-						'Either downgrade the adapter or upgrade @sveltejs/kit'
+					'Either downgrade the adapter or upgrade @sveltejs/kit'
 				);
 			}
 
@@ -299,7 +299,7 @@ function generate_lambda_functions({ builder, publish, split }) {
 			relativePath: '../server'
 		});
 
-		const fn = `import { init } from '../serverless.js';\n\nexport const handler = init(${manifest});\n`;
+		const fn = `import { init } from '../serverless.js';\n\nexport default init(${manifest});\n`;
 
 		writeFileSync(`.netlify/functions-internal/${FUNCTION_PREFIX}render.json`, fn_config);
 		writeFileSync(`.netlify/functions-internal/${FUNCTION_PREFIX}render.mjs`, fn);
