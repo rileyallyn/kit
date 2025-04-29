@@ -1,6 +1,5 @@
 import './shims';
 import { Server } from '0SERVER';
-// import { split_headers } from './headers.js';
 import { createReadableStream } from '@sveltejs/kit/node';
 import process from 'node:process';
 
